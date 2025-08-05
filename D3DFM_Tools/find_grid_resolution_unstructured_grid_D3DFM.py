@@ -14,9 +14,7 @@ from matplotlib.colors import Normalize
 from pyproj import Proj
 
 ## Set up directories and impoort Data
-file_nc = os.path.join('LPLM_grid_net.nc')
-file_nc_map = os.path.join(file_nc)
-map_xr = xr.open_dataset(file_nc_map)
+map_xr = xr.open_dataset('grid_net.nc')
 
 ## Model Resolution Calculation
 edge_x_long = map_xr['mesh2d_edge_x'].values.astype(np.float32) # Units: [long]
@@ -51,3 +49,4 @@ for i, index in enumerate(nnidx):
 cbar = fig.colorbar(sm, ax=ax)
 cbar.set_label('Distance (m)')
 plt.show()
+
